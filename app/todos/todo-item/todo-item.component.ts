@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 
-import { Todo } from "../shared/todo";
+import { Todo } from "../../shared/todo";
 
 @Component({
     moduleId: module.id,
