@@ -1,6 +1,6 @@
 <!--либо добавить атрибут [ngClass]="{ 'completed': todo.completed }"-->
 <div class="todo-item" [class.completed]="todo.completed">
-    <button class="checkbox icon" (click)="toggle()">
+    <button class="checkbox icon" (click)="onToggle()">
         <!--либо добавить атрибут [textContent]="todo.completed ? 'check_box' : 'check_box_outline_blank'"-->
         <i class="material-icons">{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i>
     </button>

@@ -1,3 +1,4 @@
 <div class="todo-list" *ngIf="todos.length">
-    <todo-item *ngFor="let todo of todos" [todo]="todo" (delete)="delete($event)"></todo-item> <!--[item] - свойство будет доступно в компоненте todo-item, значение todo - локальная переменная, которая находится в ngFor-->
+    <todo-item *ngFor="let todo of todos" [todo]="todo" (delete)="delete($event)" (toggle)="toggle($event)"></todo-item>
+    <!--[item] - свойство будет доступно в компоненте todo-item, значение todo - локальная переменная, которая находится в ngFor-->
 </div>

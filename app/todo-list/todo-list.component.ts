@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { Todo } from "../shared/todo";
+import { TodoService } from "../shared/todo.service";
 
 @Component({
     moduleId: module.id,
@@ -9,18 +10,22 @@ import { Todo } from "../shared/todo";
     styleUrls: ['todo-list.component.css']
 })
 
-export class TodoListComponent {
-    @Input() todos: Todo[];
+export class TodoListComponent implements OnInit {
+    todos: Todo[];
 
-    toggle(todo: Todo) { // todo у нас объект и в нем мы свойству title задаем тип string, completed - boolean
-        todo.completed = !todo.completed;
+    constructor(private todoService: TodoService) { //конструктор создан для инициализации свойств
+        this.todos = [];
+    }
+
+    ngOnInit() { //момент инициализации компонента
+        this.todoService.getTodos().then(todos => this.todos = todos);
     }
 
     delete(todo: Todo) {
-        let index = this.todos.indexOf(todo);
+        this.todoService.deleteTodo(todo); //от todo-item мы получим задачу, а дальше отправим в сервис
+    }
 
-        if(index > -1) {
-            this.todos.splice(index,1);
-        }
+    toggle(todo:Todo) {
+        this.todoService.toggleTodo(todo); //от todo-list мы получим задачу, а дальше отправим в сервис
     }
 }
